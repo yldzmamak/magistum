@@ -1,0 +1,112 @@
+/* Screen Dimensions*/
+$screen-xs: 320px;
+$screen-xs-min: $screen-xs;
+$screen-phone: $screen-xs-min;
+
+$screen-sm: 768px;
+$screen-sm-min: $screen-sm;
+$screen-tablet: $screen-sm-min;
+
+$screen-md: 1024px;
+$screen-md-min: $screen-md;
+$screen-desktop: $screen-md-min;
+
+$screen-lg: 1366px;
+$screen-lg-min: $screen-lg;
+$screen-lg-desktop: $screen-lg-min;
+
+$screen-xlg: 1600px;
+$screen-xlg-min: $screen-xlg;
+$screen-xlg-desktop: $screen-xlg-min;
+
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+
+$screen-phone-max: ($screen-sm-min - 1);
+$screen-tablet-max: ($screen-md-min - 1);
+$screen-desktop-max: ($screen-lg-min - 1);
+$screen-l-desktop-max: ($screen-xlg-min - 1);
+
+/* Font Sizes */
+$default-page-font: 13px;
+
+/* Color Variables */
+$color-alabaster: rgba(250, 250, 250, 1); // #fafafa
+$color-alto: rgba(221, 221, 221, 1); // #dddddd
+$color-alto-dark: rgba(212, 212, 212, 1); // #d4d4d4
+$color-alto-206: rgba(206, 206, 206, 1); // #cecece
+$color-black: rgba(0, 0, 0, 1); // #000000
+$color-black-17: rgba(0, 0, 0, 0.17); // #000000
+$color-black-03: rgba(0, 0, 0, 0.03); // #000000
+$color-black-08: rgba(0, 0, 0, 0.08); // #000000
+$color-blue-zodiac: rgba(21, 52, 87, 1); // #153457
+$color-buddha-gold: rgba(210, 158, 4, 1); // #d29e04
+$color-bright-turquoise: rgba(16, 207, 189, 1); // #10cfbd
+$color-charade: rgba(39, 43, 53, 1); // #272b35
+$color-chardonnay: rgba(251, 195, 137, 1); // #fbc389
+$color-cod-gray: rgba(28, 28, 28, 1); // #1c1c1c
+$color-cod-gray-v2: rgba(26, 26, 26, 1); // #1a1a1a
+$color-concrete: rgba(243, 243, 243, 1); // #f3f3f3
+$color-coral-red: rgba(255, 53, 69, 1); // #ff3545
+$color-crimson: rgba(232, 25, 50, 1); // #e81932
+$color-curious-blue: rgba(52, 152, 219, 1); // #3498db
+$color-dove-gray: rgba(98, 98, 98, 1); // #626262
+$color-dove-gray-02: rgba(98, 98, 98, 0.2); // #626262
+$color-downriver: rgba(10, 45, 89, 1); // #0a2d59
+$color-dusty-gray: rgba(153, 153, 153, 1); // #999999
+$color-eastern-blue-06: rgba(23, 162, 184, 0.6); // #17a2b8
+$color-ebony-clay: rgba(35, 43, 56, 1); // #232b38
+$color-emperor: rgba(85, 85, 85, 1); // #555555
+$color-fiord: rgba(66, 89, 112, 1); // #425970
+$color-flamingo: rgba(242, 102, 38, 1); // #f26626
+$color-flamingo-02: rgba(242, 102, 38, 0.2); // #f26626
+$color-gallery: rgba(238, 238, 238, 1); // #eeeeee
+$color-gallery-v2: rgba(240, 240, 240, 1); // #f0f0f0
+$color-ghost: rgba(206, 212, 218, 1); // #ced4da
+$color-gray: rgba(128, 128, 128, 1); // #808080
+$color-gray-v2: rgba(130, 127, 127, 1); // #827f7f
+$color-gray-v3: rgba(145, 145, 145, 1); // #919191
+$color-guardsman-red: rgba(204, 0, 0, 1); // #cc0000
+$color-guardsman-red-50: rgba(204, 0, 0, 0.5); // #cc0000
+$color-hawkes-blue: rgba(218, 239, 253, 1); // #daeffd
+$color-madison: rgba(15, 58, 111, 1); // #0f3a6f
+$color-malibu-08: rgba(117, 146, 253, 0.8); // #7592fd
+$color-mercury: rgba(226, 226, 226, 1); // #e2e2e2
+$color-mirage: rgba(26, 32, 42, 1); // #1a202a
+$color-mine-shaft: rgba(51, 51, 51, 1); // #333333
+$color-mountain-meadow: rgba(26, 188, 157, 1); // #1abc9d
+$color-mountain-meadow-02: rgba(26, 188, 157, 0.2); // #1abc9d
+$color-nevada: rgba(99, 108, 114, 1); // #636c72
+$color-niagara: rgba(13, 168, 153, 1); // #0da899
+$color-pacific-blue: rgba(0, 160, 188, 1); // #00a0bc
+$color-pickled-bluewood: rgba(43, 57, 71, 1); // #2b3947
+$color-punch-06: rgba(220, 53, 69, 0.6); // #dc3545
+$color-red: rgba(255, 0, 0, 1); // #ff0000
+$color-red-berry: rgba(149, 0, 0, 1); // #950000
+$color-rose-04: rgba(255, 27, 132, 0.4); // #ff1b84
+$color-sandy-brown: rgba(240, 173, 78, 1); // #f0ad4e
+$color-shamrock: rgba(46, 204, 113, 1); // #2ecc71
+$color-silver: rgba(187, 187, 187, 1); // #bbbbbb
+$color-silver-c: rgba(204, 204, 204, 1); // #cccccc
+$color-silver-chalice: rgba(170, 170, 170, 1); // #aaaaaa
+$color-slate-gray: rgba(120, 129, 149, 1); // #788195
+$color-snuff: rgba(224, 227, 242, 1); // #e0e3f2
+$color-sundown: rgba(255, 178, 178, 1); // #ffb2b2
+$color-sunglo: rgba(227, 104, 121, 1); // #e36879
+$color-thunderbird: rgba(197, 32, 32, 1); // #c52020;
+$color-tolopea: rgba(21, 0, 60, 1); // #15003c;
+$color-tree-poppy: rgba(250, 162, 26, 1); // #faa21a
+$color-trout: rgba(77, 83, 97, 1); // #4d5361
+$color-turquoise: rgba(64, 217, 202, 1); // #40d9ca
+$color-waikawa-gray: rgba(88, 122, 157, 1); // #587a9d
+$color-white: rgba(255, 255, 255, 1); // #ffffff
+$color-white-25: rgba(255, 255, 255, 0.25); // #ffffff
+$color-white-lilac: rgba(241, 243, 250, 1); // #f1f3fa
+
+/* Element Dimensions */
+$sidebar-width: 250px;
+$sidebar-mobile-width: 100%;
+
+/* Effects */
+$cubicEffect: cubic-bezier(0.05, 0.74, 0.27, 0.99);
