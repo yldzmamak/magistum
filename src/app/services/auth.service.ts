@@ -17,18 +17,19 @@ export class AuthService {
   ) {}
 
   login(username: string, password_hash: string) {
+    console.log(username);
     loadingScreen('show');
     this.http
       .post<any>(GlobalDefinitions.login, { username, password_hash })
       .subscribe(
         (res: ResponseModel) => {
-          if (res.IsSuccess) {
-            localStorage.setItem('token', res.Data.Token);
-            this.router.navigateByUrl('/dashboard');
+          if (res.success) {
+            localStorage.setItem('token', res.data);
+            this.router.navigateByUrl('/home');
             loadingScreen('hide');
           } else {
             loadingScreen('hide');
-            this.snackbarService.openSnackBar(res.Message);
+            this.snackbarService.openSnackBar(res.message);
           }
         },
         (_error) => {

@@ -1,5 +1,42 @@
 <div class="container h-100 centered-layout">
-  <div class="col-12">
-    Login Page
+  <div class="col-12 col-md-7">
+    <div class="col-12" style="text-align: center;">
+      <img
+        src="https://s3.eu-central-1.amazonaws.com/cdn.magnatectum.com/minio/login-logo.png"
+        class="logo"
+      />
+    </div>
+    <form [formGroup]="loginForm" (submit)="login()">
+      <mat-form-field class="form-element">
+        <mat-label>Kullanıcı adı</mat-label>
+        <input matInput maxlength="100" formControlName="userName" />
+        <mat-error *ngIf="!loginForm.controls['userName'].valid">
+          {{ getErrorUsername() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element" appearance="legacy">
+        <mat-label>Şifre</mat-label>
+        <input
+          matInput
+          maxlength="100"
+          [type]="passwordHide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide" type="button">
+          <mat-icon class="material-icons" style="font-size: large;">{{
+            passwordHide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </button>
+
+        <mat-error *ngIf="!loginForm.controls['password'].valid">
+          {{ getErrorPassword() }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="centered-layout">
+        <button type="submit" mat-flat-button color="primary">Giriş</button>
+      </div>
+    </form>
   </div>
 </div>

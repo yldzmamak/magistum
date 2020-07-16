@@ -1,6 +1,7 @@
 export class ResponseModel {
-  ResultCode: number;
-  Message: string;
-  Data: any;
-  IsSuccess: boolean;
+  code: number;
+  data: string;
+  internal_message: string;
+  message: string;
+  success: boolean;
 }
