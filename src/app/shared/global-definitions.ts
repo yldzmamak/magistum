@@ -8,7 +8,7 @@ export class GlobalDefinitions {
   public static messageError = 'Beklenmeyen hata ile karşılaşıldı. Lütfen daha sonra tekrar deneyiniz';
 
   //******** ROOT API URLS ********//
-  public static login = GlobalDefinitions.serviceHostUrl + '/user/login';
+  public static login = GlobalDefinitions.serviceHostUrl + GlobalDefinitions.baseHref + '/user/login';
 
   //******** ROOT API URLS END ********//
 }
