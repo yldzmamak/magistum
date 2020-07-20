@@ -11,13 +11,13 @@
     <div class="card">
       <div class="image-container">
         <div class="image-preview">
-          <div *ngIf="photo != null" [style.backgroundImage]="'url(' + photo + ')'"></div>
-          <mat-icon *ngIf="photo == null" class="photo-icon">photo_camera</mat-icon>
+          <div *ngIf="user.image_url != null" [style.backgroundImage]="'url(' + user.image_url + ')'"></div>
+          <mat-icon *ngIf="user.image_url == null" class="photo-icon">photo_camera</mat-icon>
         </div>
       </div>
-      
-      <h1 class="margin-top">Yıldız Mamak</h1>
-      <p class="description">Sınıf Öğretmeni</p>
+
+      <h1 class="margin-top">{{ user.name }} {{ user.surname }}</h1>
+      <p class="description">{{ user.title }}</p>
 
       <div class="margin-top">
         <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
