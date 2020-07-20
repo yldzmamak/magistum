@@ -30,7 +30,6 @@ export class SidebarComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     private snackbarService: SnackbarService,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -64,9 +63,5 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-
-  routeSettings() {
-    this.router.navigate(['/settings']);
   }
 }
