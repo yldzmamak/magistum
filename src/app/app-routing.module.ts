@@ -2,20 +2,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: DashboardComponent,
     children: [
       {
         path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-      {
-        path: 'login',
         loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule),
+      },
+    ],
+  },
+  {
+    path: '',
+    component: SidebarComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
       },
       {
         path: 'home',
