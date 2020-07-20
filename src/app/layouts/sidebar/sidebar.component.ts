@@ -8,6 +8,7 @@ import { AuthService, SnackbarService } from 'src/app/services';
 
 import { loadingScreen } from 'src/app/utils/loading';
 import { GlobalVariables } from 'src/app/shared/variables';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -29,17 +30,18 @@ export class SidebarComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     private snackbarService: SnackbarService,
+    private router: Router,
   ) {}
-  
+
   ngOnInit(): void {
     this.getProfileInformation();
   }
-  
-    closeSideNav() {
-      if (this.drawer._mode == 'over') {
-        this.drawer.close();
-      }
+
+  closeSideNav() {
+    if (this.drawer._mode == 'over') {
+      this.drawer.close();
     }
+  }
 
   getProfileInformation() {
     loadingScreen('show');
@@ -60,7 +62,11 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
+  }
+
+  routeSettings() {
+    this.router.navigate(['/settings']);
   }
 }
