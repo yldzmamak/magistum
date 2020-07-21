@@ -1,17 +1,24 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home.component';
+import { SidebarComponent } from 'src/app/layouts/sidebar/sidebar.component';
+
 import { HomeRoutingModule } from './home-routing.module';
-import { AuthService } from 'src/app/services';
+
+import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { SidebarComponent } from 'src/app/layouts/sidebar/sidebar.component';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DocumentDialogModule } from 'src/app/components/document-dialog/document-dialog.module';
+
+import { DocumentService } from 'src/app/services';
 
 @NgModule({
   declarations: [HomeComponent, SidebarComponent],
@@ -25,9 +32,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatListModule,
     MatTabsModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    DocumentDialogModule
   ],
   exports: [HomeComponent, SidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthService],
+  providers: [DocumentService],
 })
 export class HomeModule {}

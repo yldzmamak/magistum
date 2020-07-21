@@ -9,5 +9,7 @@ export class GlobalDefinitions {
 
   public static userData = GlobalDefinitions.serviceHostUrl + GlobalDefinitions.baseHref + 'user/data';
 
+  public static userDocuments = GlobalDefinitions.serviceHostUrl + GlobalDefinitions.baseHref + 'shared/storage';
+
   //******** ROOT API URLS END ********//
 }

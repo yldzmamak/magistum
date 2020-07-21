@@ -3,12 +3,11 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ResponseModel } from 'src/app/models';
+import { ResponseModel, User } from 'src/app/models';
 import { AuthService, SnackbarService } from 'src/app/services';
 
 import { loadingScreen } from 'src/app/utils/loading';
 import { GlobalVariables } from 'src/app/shared/variables';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,9 +16,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   @ViewChild('drawer', { static: true }) drawer: any;
-
-  photo: string =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGMf5RLsxY1VKguLz-6s6bhYUkC3xWrAmG3Q&usqp=CAU';
+  user: any = new User();
 
   public selectedItem: string = '';
   public isHandset$: Observable<boolean> = this.breakpointObserver
@@ -30,7 +27,6 @@ export class SidebarComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     private snackbarService: SnackbarService,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +45,8 @@ export class SidebarComponent implements OnInit {
     this.authService.getUserData().subscribe(
       (res: ResponseModel) => {
         if (res.success) {
-          console.log(res);
+          loadingScreen('hide');
+          this.user = res.data;
         } else {
           loadingScreen('hide');
           this.snackbarService.openSnackBar(res.message);
@@ -64,9 +61,5 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-
-  routeSettings() {
-    this.router.navigate(['/settings']);
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'https://app.magistum.com',
+  apiRoot: 'http://localhost:4200',
 };
 
 /*

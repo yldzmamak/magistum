@@ -1,1 +1,43 @@
-content
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Created_At Column -->
+    <ng-container matColumnDef="created_at">
+      <mat-header-cell class="header-dark" *matHeaderCellDef>Oluşturulma Zamanı</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.created_at | date: 'dd / MM / yyyy' }}</mat-cell
+      >
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell class="header-dark" *matHeaderCellDef>Dosya Adı</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <mat-header-cell class="header-dark" *matHeaderCellDef>Dosya Tipi</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.type }}</mat-cell>
+    </ng-container>
+
+    <!-- Url Column -->
+    <ng-container matColumnDef="url">
+      <mat-header-cell class="header-dark" *matHeaderCellDef>Url Bilgisi</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a class="mat-row-link" (click)="openDocumentDialog(element)"> {{ element.url }}</a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </table>
+
+  <mat-paginator
+    *ngIf="pageSize != null"
+    showFirstLastButtons
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageEvent = getUserDocuments($event)"
+  ></mat-paginator>
+</div>

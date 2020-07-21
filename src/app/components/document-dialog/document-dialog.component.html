@@ -1,0 +1,19 @@
+<div *ngIf="data && isPhoto" class="image-upload">
+  <div class="image-preview">
+    <div id="imagePreview" [style.backgroundImage]="'url(' + data.url + ')'"></div>
+  </div>
+</div>
+
+<div *ngIf="data && isVideo" class="video-container">
+  <video controls (click)="toggleVideo()" #videoPlayer>
+    <source src="{{ data.url }}" type="video/mp4" />
+  </video>
+</div>
+
+<app-doc-viewer
+  *ngIf="data && isDocument"
+  [url]="data.url"
+></app-doc-viewer>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Çıkış</button>
+</mat-dialog-actions>

@@ -24,11 +24,9 @@ export class AuthService {
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Origin': '*',
     }),
-    // withCredentials: false
   };
 
   login(username: string, password_hash: string) {
-    console.log(username);
     loadingScreen('show');
     this.httpClient
       .post<any>(GlobalDefinitions.login, { username, password_hash })

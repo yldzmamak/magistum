@@ -14,6 +14,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { RouterModule } from '@angular/router';
 import { SnackbarService } from './services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -25,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RouterModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatCardModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

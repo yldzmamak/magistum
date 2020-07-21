@@ -1,0 +1,12 @@
+{
+  "/api/v1/*": {
+    "target": "https://app.magistum.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/v1/data": "/api/v1/data",
+      "^/api/v1/shared/storage": "/api/v1/shared/storage"
+      }
+  }
+}
