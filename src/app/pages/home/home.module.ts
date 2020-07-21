@@ -15,6 +15,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DocumentDialogModule } from 'src/app/components/document-dialog/document-dialog.module';
 
 import { DocumentService } from 'src/app/services';
 
@@ -32,6 +34,8 @@ import { DocumentService } from 'src/app/services';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    DocumentDialogModule
   ],
   exports: [HomeComponent, SidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

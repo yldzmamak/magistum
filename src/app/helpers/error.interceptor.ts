@@ -5,23 +5,19 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from '../services';
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor
-{
+export class ErrorInterceptor implements HttpInterceptor {
+  constructor(public authService: AuthService) {}
 
-  constructor(public authService: AuthService) { }
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      catchError((err) => {
+        if (err.status === 401 || err.StatusCode === 401) {
+          this.authService.logout();
+        }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
-  {
-    return next.handle(request).pipe(catchError(err =>
-    {
-
-      if (err.status === 401 || err.StatusCode === 401)
-      {
-        this.authService.logout();
-      }
-
-      const error = err.error.message || err.statusText;
-      return throwError(error);
-    }))
+        const error = err.error.message || err.statusText;
+        return throwError(error);
+      }),
+    );
   }
 }

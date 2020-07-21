@@ -1,0 +1,29 @@
+.image-upload {
+  position: relative;
+  display: contents;
+  max-width: 45%;
+  margin: 10px auto 30px;
+}
+
+.image-upload .image-preview {
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-upload .image-preview > div {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.video-container {
+  width: 100%;
+  height: 93%;
+  video {
+    width: 100%;
+    height: 100%;
+  }
+}

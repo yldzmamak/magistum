@@ -8,3 +8,13 @@
   padding-right: 0;
   padding-left: 0;
 }
+
+.snackBar {
+  background: #2e4486;
+  color: white;
+  .mat-button,
+  .mat-icon-button,
+  .mat-stroked-button {
+    color: white;
+  }
+}

@@ -18,9 +18,6 @@ export class SidebarComponent implements OnInit {
   @ViewChild('drawer', { static: true }) drawer: any;
   user: any = new User();
 
-  photo: string =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGMf5RLsxY1VKguLz-6s6bhYUkC3xWrAmG3Q&usqp=CAU';
-
   public selectedItem: string = '';
   public isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

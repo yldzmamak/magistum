@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard],
     component: SidebarComponent,
     children: [
       {
@@ -27,6 +29,7 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+        canActivate: [AuthGuard],
       },
     ],
   },

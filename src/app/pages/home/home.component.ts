@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { SnackbarService, DocumentService } from 'src/app/services';
@@ -8,6 +8,8 @@ import { SnackbarService, DocumentService } from 'src/app/services';
 import { GlobalVariables } from 'src/app/shared/variables';
 import { loadingScreen } from 'src/app/utils/loading';
 import { Document } from 'src/app/models';
+import { MatDialog } from '@angular/material/dialog';
+import { DocumentDialogComponent } from 'src/app/components/document-dialog/document-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -15,25 +17,34 @@ import { Document } from 'src/app/models';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  pageEvent: PageEvent;
+
   displayedColumns: string[] = ['created_at', 'name', 'type', 'url'];
   dataSource = new MatTableDataSource<Document>();
+  pageSize: number = 20;
+  length: number;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
-  constructor(private documentService: DocumentService, private snackbarService: SnackbarService) {}
+  constructor(
+    private documentService: DocumentService,
+    private snackbarService: SnackbarService,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
-    this.getUserDocuments();
+    this.getUserDocuments(null);
     this.dataSource.paginator = this.paginator;
   }
 
-  getUserDocuments() {
+  getUserDocuments(event?: PageEvent) {
     loadingScreen('show');
-    this.documentService.getUserDocuments().subscribe(
+    this.documentService.getUserDocuments(event).subscribe(
       (res: any) => {
         if (res.success) {
           loadingScreen('hide');
           this.dataSource.data = res.data.items;
+          this.pageSize = res.data.page_size;
+          this.length = res.data.item_count;
         } else {
           loadingScreen('hide');
           this.snackbarService.openSnackBar(res.Message);
@@ -44,37 +55,15 @@ export class HomeComponent implements OnInit {
         this.snackbarService.openSnackBar(GlobalVariables.messageError);
       },
     );
+    return event;
   }
 
-  onRowClicked(row: any) {
-    console.log('Row clicked: ', row);
+  openDocumentDialog(row: any): void {
+    this.dialog.open(DocumentDialogComponent, {
+      data: row,
+      width: '800px',
+      height: '500px',
+      autoFocus: false,
+    });
   }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-];

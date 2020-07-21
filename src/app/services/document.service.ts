@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GlobalDefinitions } from '../shared/global-definitions';
+import { PageEvent } from '@angular/material/paginator';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,13 @@ export class DocumentService {
     }),
   };
 
-  getUserDocuments() {
-    return this.httpClient.get(GlobalDefinitions.userDocuments, this.httpOptions);
+  getUserDocuments(event?: PageEvent) {
+    let pageIndex = event != null ? event.pageIndex : '';
+    let pageSize = event != null ? event.pageSize : '';
+    let query =
+      event != null
+        ? GlobalDefinitions.userDocuments + '?page=' + pageIndex + '&page_size=' + pageSize
+        : GlobalDefinitions.userDocuments;
+    return this.httpClient.get(query, this.httpOptions);
   }
 }

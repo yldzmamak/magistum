@@ -23,12 +23,21 @@
     <!-- Url Column -->
     <ng-container matColumnDef="url">
       <mat-header-cell class="header-dark" *matHeaderCellDef>Url Bilgisi</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.url }}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <a class="mat-row-link" (click)="openDocumentDialog(element)"> {{ element.url }}</a>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+    *ngIf="pageSize != null"
+    showFirstLastButtons
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageEvent = getUserDocuments($event)"
+  ></mat-paginator>
 </div>
