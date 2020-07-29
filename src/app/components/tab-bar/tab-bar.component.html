@@ -1,3 +1,20 @@
-<div>
-  <p>tab-bar works!</p>
+<div class="row tab">
+  <div class="col-6 null-padding centered-layout">
+    <i
+      routerLinkActive="active-router-link"
+      [routerLink]="['/profile']"
+      nz-icon
+      [nzType]="'user'"
+      [nzTheme]="'outline'"
+    ></i>
+  </div>
+  <div class="col-6 null-padding centered-layout">
+    <i
+      routerLinkActive="active-router-link"
+      [routerLink]="['/home']"
+      nz-icon
+      [nzType]="'profile'"
+      [nzTheme]="'outline'"
+    ></i>
+  </div>
 </div>

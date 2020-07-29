@@ -1,0 +1,28 @@
+<div class="logout-button">
+  <button nz-button (click)="logout()">
+    <i nz-icon nzType="poweroff"></i>Çıkış
+  </button>
+</div>
+
+<div class="card">
+  <div class="centered-layout">
+    <div class="image-container photo-container">
+      <div class="image-preview">
+        <div
+          *ngIf="user.image_url != null && user.image_url != ''"
+          [style.backgroundImage]="'url(' + user.image_url + ')'"
+        ></div>
+        <i
+          *ngIf="user.image_url == null || user.image_url == ''"
+          class="photo-icon"
+          nz-icon
+          [nzType]="'camera'"
+          [nzTheme]="'outline'"
+        ></i>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="col-12 margin-top">{{ user.name }} {{ user.surname }}</h1>
+  <p class="col-12 description">{{ user.title }}</p>
+</div>

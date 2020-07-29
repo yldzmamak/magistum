@@ -1,0 +1,14 @@
+.tab {
+  height: 100%;
+}
+
+:host ::ng-deep .anticon,
+.anticon svg {
+  &:focus {
+    outline: none !important;
+  }
+}
+
+:host ::ng-deep .anticon {
+  color: white;
+}

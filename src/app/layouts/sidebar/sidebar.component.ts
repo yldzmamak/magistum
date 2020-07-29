@@ -16,8 +16,6 @@ import { GlobalVariables } from 'src/app/shared/variables';
 })
 export class SidebarComponent implements OnInit {
   isCollapsed = false;
-  
-  @ViewChild('drawer', { static: true }) drawer: any;
   user: any = new User();
 
   public selectedItem: string = '';
@@ -35,12 +33,6 @@ export class SidebarComponent implements OnInit {
     this.getProfileInformation();
   }
 
-  closeSideNav() {
-    if (this.drawer._mode == 'over') {
-      this.drawer.close();
-    }
-  }
-
   getProfileInformation() {
     loadingScreen('show');
 
@@ -49,6 +41,7 @@ export class SidebarComponent implements OnInit {
         if (res.success) {
           loadingScreen('hide');
           this.user = res.data;
+          localStorage.setItem('userInformation', JSON.stringify(this.user));
         } else {
           loadingScreen('hide');
           this.snackbarService.openSnackBar(res.message);

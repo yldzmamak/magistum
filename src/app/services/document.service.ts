@@ -18,9 +18,9 @@ export class DocumentService {
     }),
   };
 
-  getUserDocuments(event?: PageEvent) {
-    let pageIndex = event != null ? event.pageIndex : '';
-    let pageSize = event != null ? event.pageSize : '';
+  getUserDocuments(event?: any) {
+    let pageIndex = event != null ? (event.pageIndex != undefined ? event.pageIndex : '') : '';
+    let pageSize = event != null ? (event.pageSize != undefined ? event.pageSize : '') : '';
     let query =
       event != null
         ? GlobalDefinitions.userDocuments + '?page=' + pageIndex + '&page_size=' + pageSize

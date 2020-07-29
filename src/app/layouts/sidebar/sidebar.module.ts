@@ -9,6 +9,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconModule } from '@ant-design/icons-angular';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [SidebarComponent],
@@ -21,6 +22,7 @@ import { IconModule } from '@ant-design/icons-angular';
     NzMenuModule,
     NzIconModule,
     IconModule,
+    NzTableModule
   ],
   exports: [SidebarComponent],
 })
