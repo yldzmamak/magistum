@@ -19,8 +19,8 @@ export class DocumentService {
   };
 
   getUserDocuments(event?: any) {
-    let pageIndex = event != null ? (event.pageIndex != undefined ? event.pageIndex : '') : '';
-    let pageSize = event != null ? (event.pageSize != undefined ? event.pageSize : '') : '';
+    let pageIndex = event != null ? (event.pageIndex != undefined ? event.pageIndex : 0) : 0;
+    let pageSize = event != null ? (event.pageSize != undefined ? event.pageSize : 10) : 10;
     let query =
       event != null
         ? GlobalDefinitions.userDocuments + '?page=' + pageIndex + '&page_size=' + pageSize
