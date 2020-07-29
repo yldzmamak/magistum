@@ -6,7 +6,7 @@ import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
@@ -16,14 +16,17 @@ import { SnackbarService } from './services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { NgZorroAntdModule, tr_TR, NZ_I18N, NZ_ICONS } from 'ng-zorro-antd';
 import { TabBarComponent } from 'src/app/components/tab-bar/tab-bar.component';
-import { IconDefinition } from '@ant-design/icons-angular';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
-import { IconModule } from '@ant-design/icons-angular';
+import { IconsProviderModule } from './icons-provider.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { FormsModule } from '@angular/forms';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { tr_TR } from 'ng-zorro-antd/i18n';
+import tr from '@angular/common/locales/tr';
 
-const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
+registerLocaleData(tr);
+
 @NgModule({
   declarations: [AppComponent, DashboardComponent, SidebarComponent, TabBarComponent],
   imports: [
@@ -35,17 +38,16 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     HttpClientModule,
     MatSnackBarModule,
     MatCardModule,
-    NgZorroAntdModule,
-    NzIconModule,
-    IconModule,
-    NzIconModule.forRoot(icons),
+    IconsProviderModule,
+    NzLayoutModule,
+    NzMenuModule,
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     SnackbarService,
     { provide: NZ_I18N, useValue: tr_TR },
-    { provide: NZ_ICONS, useValue: icons },
   ],
   bootstrap: [AppComponent],
 })

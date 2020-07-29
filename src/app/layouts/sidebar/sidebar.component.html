@@ -62,23 +62,26 @@
     [(nzCollapsed)]="isCollapsed"
     [nzBreakpoint]="'lg'"
   >
-    <div class="logo"></div>
+    <div class="sider-logo"></div>
 
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
       <li nz-menu-item>
         <span>
           <i nz-icon [nzType]="'video-camera'" [nzTheme]="'outline'"></i>
-          <span class="nav-text">nav 1</span>
+          <span class="nav-text">Profil</span>
         </span>
       </li>
       <li nz-menu-item>
-        <span><i nz-icon type="video-camera"></i><span class="nav-text">nav 2</span></span>
+        <span>
+          <i nz-icon [nzType]="'video-camera'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">Dosyalar</span>
+        </span>
       </li>
       <li nz-menu-item>
-        <span><i nz-icon type="upload"></i><span class="nav-text">nav 3</span></span>
-      </li>
-      <li nz-menu-item>
-        <span><i nz-icon type="user"></i><span class="nav-text">nav 4</span></span>
+        <span>
+          <i nz-icon [nzType]="'logout'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">Çıkış</span>
+        </span>
       </li>
     </ul>
   </nz-sider>

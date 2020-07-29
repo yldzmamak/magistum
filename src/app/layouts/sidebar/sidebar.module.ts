@@ -20,7 +20,7 @@ import { IconModule } from '@ant-design/icons-angular';
     NzCardModule,
     NzMenuModule,
     NzIconModule,
-    IconModule
+    IconModule,
   ],
   exports: [SidebarComponent],
 })
