@@ -18,6 +18,8 @@ export class SidebarComponent implements OnInit {
   @ViewChild('drawer', { static: true }) drawer: any;
   user: any = new User();
 
+  isCollapsed = false;
+
   public selectedItem: string = '';
   public isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

@@ -3,7 +3,19 @@ body {
   height: 100%;
   min-height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.sidebar-container {
+  margin: 80px 15px 15px 15px;
+  @include phone {
+    margin: 80px 15px 65px 15px;
+  }
+  .sidebar-content {
+    padding: 15px;
+    background: #fff;
+  }
 }

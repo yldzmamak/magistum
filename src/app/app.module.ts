@@ -15,9 +15,17 @@ import { RouterModule } from '@angular/router';
 import { SnackbarService } from './services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { NgZorroAntdModule, tr_TR, NZ_I18N, NZ_ICONS } from 'ng-zorro-antd';
+import { TabBarComponent } from 'src/app/components/tab-bar/tab-bar.component';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
+import { IconModule } from '@ant-design/icons-angular';
 
+const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent, DashboardComponent, SidebarComponent, TabBarComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -27,11 +35,17 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     MatSnackBarModule,
     MatCardModule,
+    NgZorroAntdModule,
+    NzIconModule,
+    IconModule,
+    NzIconModule.forRoot(icons),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     SnackbarService,
+    { provide: NZ_I18N, useValue: tr_TR },
+    { provide: NZ_ICONS, useValue: icons },
   ],
   bootstrap: [AppComponent],
 })

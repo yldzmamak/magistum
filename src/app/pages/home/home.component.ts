@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   pageSize: number = 20;
   length: number;
 
+  isCollapsed = false;
+  
   constructor(
     private documentService: DocumentService,
     private snackbarService: SnackbarService,

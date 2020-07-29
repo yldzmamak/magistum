@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     fixedInViewport="true"
@@ -53,3 +53,46 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+ -->
+
+<nz-layout>
+  <nz-sider
+    *ngIf="!(isHandset$ | async)"
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzBreakpoint]="'lg'"
+  >
+    <div class="logo"></div>
+
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item>
+        <span>
+          <i nz-icon [nzType]="'video-camera'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">nav 1</span>
+        </span>
+      </li>
+      <li nz-menu-item>
+        <span><i nz-icon type="video-camera"></i><span class="nav-text">nav 2</span></span>
+      </li>
+      <li nz-menu-item>
+        <span><i nz-icon type="upload"></i><span class="nav-text">nav 3</span></span>
+      </li>
+      <li nz-menu-item>
+        <span><i nz-icon type="user"></i><span class="nav-text">nav 4</span></span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="header">
+      <div class="logo-container">
+        <img class="logo" src="https://www.magistum.com/img/magistum-logo.png" />
+      </div>
+    </nz-header>
+    <nz-content class="sidebar-container">
+      <div class="sidebar-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <app-tab-bar *ngIf="isHandset$ | async" class="tab-bar"></app-tab-bar>
+  </nz-layout>
+</nz-layout>

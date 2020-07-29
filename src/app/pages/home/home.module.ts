@@ -1,7 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HomeComponent } from './home.component';
-import { SidebarComponent } from 'src/app/layouts/sidebar/sidebar.component';
 
 import { HomeRoutingModule } from './home-routing.module';
 
@@ -19,9 +18,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DocumentDialogModule } from 'src/app/components/document-dialog/document-dialog.module';
 
 import { DocumentService } from 'src/app/services';
-
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 @NgModule({
-  declarations: [HomeComponent, SidebarComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -35,9 +34,10 @@ import { DocumentService } from 'src/app/services';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    DocumentDialogModule
+    DocumentDialogModule,
+    NgZorroAntdModule,
   ],
-  exports: [HomeComponent, SidebarComponent],
+  exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [DocumentService],
 })
