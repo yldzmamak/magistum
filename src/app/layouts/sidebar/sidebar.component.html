@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     fixedInViewport="true"
@@ -52,4 +52,88 @@
 
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<!-- <nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Ana Sayfa" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Profil</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/welcome">Dosyalar</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Çıkış" nzIcon="logout"></li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout> -->
+
+<nz-layout>
+  <nz-sider
+    *ngIf="!(isHandset$ | async)"
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzBreakpoint]="'lg'"
+  >
+    <div class="sider-logo"></div>
+
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item>
+        <span>
+          <i nz-icon [nzType]="'video-camera'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">Profil</span>
+        </span>
+      </li>
+      <li nz-menu-item>
+        <span>
+          <i nz-icon [nzType]="'video-camera'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">Dosyalar</span>
+        </span>
+      </li>
+      <li nz-menu-item>
+        <span>
+          <i nz-icon [nzType]="'logout'" [nzTheme]="'outline'"></i>
+          <span class="nav-text">Çıkış</span>
+        </span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="header">
+      <div class="logo-container">
+        <img class="logo" src="https://www.magistum.com/img/magistum-logo.png" />
+      </div>
+    </nz-header>
+    <nz-content class="sidebar-container">
+      <div class="sidebar-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <!-- <app-tab-bar *ngIf="isHandset$ | async" class="tab-bar"></app-tab-bar> -->
+  </nz-layout>
+</nz-layout>

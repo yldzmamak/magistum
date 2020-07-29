@@ -21,7 +21,7 @@ import { DocumentDialogModule } from 'src/app/components/document-dialog/documen
 import { DocumentService } from 'src/app/services';
 
 @NgModule({
-  declarations: [HomeComponent, SidebarComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -37,7 +37,7 @@ import { DocumentService } from 'src/app/services';
     MatDialogModule,
     DocumentDialogModule
   ],
-  exports: [HomeComponent, SidebarComponent],
+  exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [DocumentService],
 })

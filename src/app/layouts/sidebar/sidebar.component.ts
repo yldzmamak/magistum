@@ -15,6 +15,8 @@ import { GlobalVariables } from 'src/app/shared/variables';
   styleUrls: ['sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  isCollapsed = false;
+  
   @ViewChild('drawer', { static: true }) drawer: any;
   user: any = new User();
 
